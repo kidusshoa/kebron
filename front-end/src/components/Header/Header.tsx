@@ -1,11 +1,9 @@
 import { useState } from "react";
 import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
-import { SearchIcon, SearchIcon2 } from "../icon/search";
 
 const Header = () => {
   const [visible, setVisible] = useState(false);
-  const [searchVisible, setSearchVisible] = useState(false);
 
   return (
     <nav className="bg-first border-gray-200 h-28 top-0 sticky">
@@ -82,40 +80,7 @@ const Header = () => {
               </a>
             </li>
             <li>
-              <div className="flex h-full min-w-full flex-row md:order-2">
-                <button
-                  type="button"
-                  data-collapse-toggle="navbar-search"
-                  aria-controls="navbar-search"
-                  aria-expanded={searchVisible}
-                  onClick={() => setSearchVisible(!searchVisible)}
-                  className="md:hidden block py-2 px-3  hover:bg-fourth rounded md:bg-transparent md:text-third md:p-0"
-                >
-                  <SearchIcon />
-                  <span className="sr-only">Search</span>
-                </button>
-                <div className="flex w-full ">
-                  <div className="p-4 h-full">
-                    <input
-                      type="text"
-                      id="search-navbar"
-                      className={`${
-                        searchVisible ? "visible" : "hidden"
-                      } md:hidden block w-full p-2 ps-10 text-sm text-gray-900 border border-third rounded-lg bg-gray-50 dark:placeholder-gray-400 dark:text-white focus:ring-third focus:border-third`}
-                      placeholder="Search..."
-                    />
-                  </div>
-                  <input
-                    type="text"
-                    id="search-navbar"
-                    className="md:block hidden w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50  focus:outline-none dark:border-gray-600 dark:placeholder-gray-400  focus:ring-third focus:border-third"
-                    placeholder="Search..."
-                  />
-                  <button className="flex items-cente h-20 w-20 bg-yellow-200 hover:bg-blue-500 justify-center pointer-events-none">
-                    <SearchIcon2 />
-                  </button>
-                </div>
-              </div>
+              <div className="flex h-full min-w-full flex-row md:order-2"></div>
             </li>
             <li>
               <Link to="/admin/login">

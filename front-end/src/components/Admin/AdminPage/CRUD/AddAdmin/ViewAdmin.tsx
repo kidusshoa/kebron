@@ -8,6 +8,7 @@ const AdminCard = () => {
       <div className="h-40 w-full">
         <div className="bg-white shadow-md rounded-lg p-4 mb-4 flex justify-between items-center">
           <div>
+            <p className="text-lg font-semibold">Full Name</p>
             <p className="text-lg font-semibold">admin email</p>
           </div>
           <button
