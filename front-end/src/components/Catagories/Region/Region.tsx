@@ -10,7 +10,7 @@ const CityList = () => {
   return (
     <div className="h-full w-full rounded shadow-md bg-gray-100 gap-5 flex flex-col items-center justify-center p-6">
       <Link
-        to="regions/addisababa"
+        to="/addisababa"
         className="w-full h-full flex items-center justify-center"
       >
         <div className="md:w-2/3 hover:bg-first h-96 md:h-96 flex bg-white flex-col md:flex-row items-center gap-3 justify-center">

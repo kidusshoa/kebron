@@ -1,9 +1,12 @@
-const DireDawa = () => {
+import Header from "../../../Header/Header";
+
+const Adama = () => {
   return (
-    <div>
+    <div className="w-full h-full">
+      <Header />
       <div>dire</div>
     </div>
   );
 };
 
-export default DireDawa;
+export default Adama;
