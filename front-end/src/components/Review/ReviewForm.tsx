@@ -81,10 +81,10 @@ const ReviewForm = () => {
             </span>
           )}
         </div>
-        <div className="text-center">
+        <div className="text-center w-full">
           <button
             type="submit"
-            className="bg-second text-third px-4 py-2 rounded-lg hover:bg-first focus:outline-none focus:bg-second"
+            className="bg-second text-third px-4 py-2 rounded-lg hover:bg-first w-full focus:outline-none focus:bg-second"
           >
             Submit
           </button>

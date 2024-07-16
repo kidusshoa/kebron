@@ -1,4 +1,4 @@
-import Pic from "../assets/images/appartment.jpg";
+import Pic from "../../assets/images/appartment.jpg";
 
 const Four = () => {
   return (

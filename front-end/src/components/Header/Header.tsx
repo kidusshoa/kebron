@@ -10,10 +10,7 @@ const Header = () => {
   return (
     <nav className="bg-first border-gray-200 h-28 top-0 sticky">
       <div className="max-w-screen-xl h-full flex flex-wrap items-center justify-between mx-auto p-4">
-        <a
-          href="https://flowbite.com/"
-          className="flex items-center space-x-3 rtl:space-x-reverse"
-        >
+        <a className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src={logo} className="md:h-20 h-12 " alt=" Logo" />
           <span className="self-center text-2xl font-semibold whitespace-nowrap text-fourth">
             Kebron Rents
@@ -53,7 +50,7 @@ const Header = () => {
             <li>
               <Link
                 to="/"
-                className="block py-2 px-3  hover:bg-fourth rounded md:bg-transparent md:text-third md:p-0  "
+                className="block py-2 px-3 rounded md:bg-transparent md:text-third md:p-0  "
                 aria-current="page"
               >
                 Home
@@ -62,7 +59,7 @@ const Header = () => {
             <li>
               <Link
                 to="/about"
-                className="block py-2 px-3  hover:bg-fourth rounded md:bg-transparent md:text-third md:p-0"
+                className="block py-2 px-3 rounded md:bg-transparent md:text-third md:p-0"
               >
                 About
               </Link>
@@ -70,19 +67,19 @@ const Header = () => {
             <li>
               <Link
                 to="/categories"
-                className="block py-2 px-3  hover:bg-fourth rounded md:bg-transparent md:text-third md:p-0"
+                className="block py-2 px-3 rounded md:bg-transparent md:text-third md:p-0"
               >
                 Categories
               </Link>
             </li>
 
             <li>
-              <Link
-                to="/contact"
-                className="block py-2 px-3  hover:bg-fourth rounded md:bg-transparent md:text-third md:p-0"
+              <a
+                href="#contact"
+                className="block py-2 px-3 rounded md:bg-transparent md:text-third md:p-0"
               >
                 Contact
-              </Link>
+              </a>
             </li>
             <li>
               <div className="flex h-full min-w-full flex-row md:order-2">
@@ -121,7 +118,7 @@ const Header = () => {
               </div>
             </li>
             <li>
-              <Link to="/contact">
+              <Link to="/admin/login">
                 <button
                   type="button"
                   className=" border border-gray-300 focus:outline-none hover:bg-second focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 bg-third text-first "
