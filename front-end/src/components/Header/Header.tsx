@@ -57,19 +57,19 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link
-                to="/about"
+              <a
+                href="#about"
                 className="block py-2 px-3 rounded md:bg-transparent md:text-third md:p-0"
               >
                 About
-              </Link>
+              </a>
             </li>
             <li>
               <Link
-                to="/categories"
+                to="/cities"
                 className="block py-2 px-3 rounded md:bg-transparent md:text-third md:p-0"
               >
-                Categories
+                Cities
               </Link>
             </li>
 
