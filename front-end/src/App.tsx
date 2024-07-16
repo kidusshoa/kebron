@@ -21,7 +21,7 @@ function App() {
         <Route path="/admin/login" element={<LoginPage />} />
         <Route path="/admin/reviews" element={<Review />} />
         <Route path="/admin/addadmin" element={<AddAdmin />} />
-        <Route path="/cities" element={<Catagory />} />
+        <Route path="/explore" element={<Catagory />} />
         <Route path="/addisababa" element={<AddisAbaba />} />
         <Route path="/adama" element={<Adama />} />
         <Route path="/hawassa" element={<Hawassa />} />

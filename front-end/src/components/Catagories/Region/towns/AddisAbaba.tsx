@@ -18,13 +18,20 @@ const AddisAbaba = () => {
             <div className="px-6 py-4">
               <div className="font-bold text-xl mb-2">Addis Ababa</div>
               <p className="text-gray-700 text-base">
+                <span className="font-semibold">Phone:</span> 0987766554
+              </p>
+              <p className="text-gray-700 text-base">
                 <span className="font-semibold">Bedrooms:</span> Two
+              </p>
+              <p className="text-gray-700 text-base">
+                <span className="font-semibold">Address:</span> 4 killo
               </p>
               <p className="text-gray-700 text-base">
                 <span className="font-semibold">Price:</span> 4500 ETB
               </p>
+
               <p className="text-gray-700 text-base">
-                <span className="font-semibold">Phone:</span> 0987766554
+                <span className="font-semibold">Category:</span> Villa
               </p>
             </div>
           </div>

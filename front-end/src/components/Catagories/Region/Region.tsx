@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import AddisAbabaImage from "../../../assets/images/addis.jpg";
 // import AdamaImage from '../../../../assets/images/adama.jpg';
 // import HawassaImage from '../../../../assets/images/hawassa.jpg';
@@ -8,72 +7,38 @@ import AddisAbabaImage from "../../../assets/images/addis.jpg";
 //
 const CityList = () => {
   return (
-    <div className="h-full w-full rounded shadow-md bg-gray-100 gap-5 flex flex-col items-center justify-center p-6">
-      <Link
-        to="/addisababa"
-        className="w-full h-full flex items-center justify-center"
-      >
-        <div className="md:w-2/3 hover:bg-first h-96 md:h-96 flex bg-white flex-col md:flex-row items-center gap-3 justify-center">
-          <div className="md:w-1/3 h-full flex items-center p-2 md:p-0 ">
-            <img src={AddisAbabaImage} className="cover rounded-md" alt="" />
+    <div className="w-full gap-4 md:gap-5 h-full grid md:grid-cols-4 grid-cols-1 p-5  md:px-4 ">
+      {/*place-items-center */}
+      {[12, 3, 4, 5, 6].map((item) => (
+        <div className="h-full rounded md:w-full shadow-lg bg-white">
+          <div key={item} className="w-full h-2/3 overflow-hidden">
+            <img
+              className="w-full aspect-square object-cover"
+              src={AddisAbabaImage}
+              alt="Rental"
+            />
           </div>
-          <div className="text-3xl text-left">
-            <h1>Addis Ababa</h1>
-          </div>
-        </div>
-      </Link>
-      <Link
-        to="regions/addisababa"
-        className="w-full h-full flex items-center justify-center"
-      >
-        <div className="md:w-2/3 hover:bg-first h-96 md:h-96 flex bg-white flex-col md:flex-row items-center gap-3 justify-center">
-          <div className="md:w-1/3 h-full flex items-center p-2 md:p-0 ">
-            <img src={AddisAbabaImage} className="cover rounded-md" alt="" />
-          </div>
-          <div className="text-3xl text-left">
-            <h1>Addis Ababa</h1>
-          </div>
-        </div>
-      </Link>
-      <Link
-        to="regions/addisababa"
-        className="w-full h-full flex items-center justify-center"
-      >
-        <div className="md:w-2/3 hover:bg-first h-96 md:h-96 flex bg-white flex-col md:flex-row items-center gap-3 justify-center">
-          <div className="md:w-1/3 h-full flex items-center p-2 md:p-0 ">
-            <img src={AddisAbabaImage} className="cover rounded-md" alt="" />
-          </div>
-          <div className="text-3xl text-left">
-            <h1>Addis Ababa</h1>
+          <div className="px-6 py-4">
+            <div className="font-bold text-xl mb-2">Addis Ababa</div>
+            <p className="text-gray-700 text-base">
+              <span className="font-semibold">Phone:</span> 0987766554
+            </p>
+            <p className="text-gray-700 text-base">
+              <span className="font-semibold">Bedrooms:</span> Two
+            </p>
+            <p className="text-gray-700 text-base">
+              <span className="font-semibold">Address:</span> 4 killo
+            </p>
+            <p className="text-gray-700 text-base">
+              <span className="font-semibold">Price:</span> 4500 ETB
+            </p>
+
+            <p className="text-gray-700 text-base">
+              <span className="font-semibold">Category:</span> Villa
+            </p>
           </div>
         </div>
-      </Link>
-      <Link
-        to="regions/addisababa"
-        className="w-full h-full flex items-center justify-center"
-      >
-        <div className="md:w-2/3 hover:bg-first h-96 md:h-96 flex bg-white flex-col md:flex-row items-center gap-3 justify-center">
-          <div className="md:w-1/3 h-full flex items-center p-2 md:p-0 ">
-            <img src={AddisAbabaImage} className="cover rounded-md" alt="" />
-          </div>
-          <div className="text-3xl text-left">
-            <h1>Addis Ababa</h1>
-          </div>
-        </div>
-      </Link>
-      <Link
-        to="regions/addisababa"
-        className="w-full h-full flex items-center justify-center"
-      >
-        <div className="md:w-2/3 hover:bg-first h-96 md:h-96 flex bg-white flex-col md:flex-row items-center gap-3 justify-center">
-          <div className="md:w-1/3 h-full flex items-center p-2 md:p-0 ">
-            <img src={AddisAbabaImage} className="cover rounded-md" alt="" />
-          </div>
-          <div className="text-3xl text-left">
-            <h1>Addis Ababa</h1>
-          </div>
-        </div>
-      </Link>
+      ))}
     </div>
   );
 };

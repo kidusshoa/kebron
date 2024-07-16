@@ -10,10 +10,12 @@ const schema = z.object({
   address: z.string().min(1, "Address is required"),
   bedroom: z.string().min(1, "Bedroom Number is required"),
   price: z.number().positive("Price must be a positive number"),
+  category: z.string().min(1, "Category is required"),
   city: z.string().min(1, "City is required"),
 });
 
-const cities = ["Addis Ababa", "Adama", "Hawassa", "Harar City", "Dire Dawa"]; // Example cities
+const cities = ["Addis Ababa", "Adama", "Hawassa", "Harar City", "Dire Dawa"];
+const categories = ["Appartment", "Villa"]; // Example cities
 
 const AddPropertyForm = () => {
   const {
@@ -131,6 +133,31 @@ const AddPropertyForm = () => {
           {errors.price && (
             <p className="text-red-500 text-sm">
               {errors.price.message?.toString()}
+            </p>
+          )}
+        </div>
+        <div className="space-y-2">
+          <label
+            htmlFor="categories"
+            className="block text-gray-700 text-sm font-bold"
+          >
+            Categories
+          </label>
+          <select
+            id="category"
+            {...register("category")}
+            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-indigo-500"
+          >
+            <option value="">Choose a Category</option>
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+          {errors.category && (
+            <p className="text-red-500 text-sm">
+              {errors.category.message?.toString()}
             </p>
           )}
         </div>

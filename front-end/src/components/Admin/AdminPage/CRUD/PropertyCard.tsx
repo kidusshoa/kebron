@@ -9,6 +9,7 @@ const PropertyCard = () => {
     address: "Summit Giyorgis",
     bedroom: "Three",
     price: 13000,
+    category: "Appartment",
     city: "Addis Ababa",
   });
 
@@ -36,12 +37,13 @@ const PropertyCard = () => {
           className="w-full h-48 object-cover rounded-t-lg"
         />
         <div className="p-4">
-          <h3 className="text-lg font-bold">Hawassa</h3>
+          <h3 className="text-lg font-bold">{formData.city}</h3>
           <p className="text-gray-700">Phone: {formData.phoneNumber}</p>
           <p className="text-gray-700">Bedrooms: {formData.bedroom}</p>
           <p className="text-gray-700">Address: {formData.address}</p>
           <p className="text-gray-700">Price: {formData.price} ETB</p>
-          <p className="text-gray-700">City: {formData.city}</p>
+          <p className="text-gray-700">Category: {formData.category}</p>
+
           <div className="flex justify-between mt-4">
             <button
               onClick={openModal}
@@ -65,12 +67,13 @@ const PropertyCard = () => {
           className="w-full h-48 object-cover rounded-t-lg"
         />
         <div className="p-4">
-          <h3 className="text-lg font-bold">Hawassa</h3>
+          <h3 className="text-lg font-bold">{formData.city}</h3>
           <p className="text-gray-700">Phone: {formData.phoneNumber}</p>
           <p className="text-gray-700">Bedrooms: {formData.bedroom}</p>
           <p className="text-gray-700">Address: {formData.address}</p>
           <p className="text-gray-700">Price: {formData.price} ETB</p>
-          <p className="text-gray-700">City: {formData.city}</p>
+          <p className="text-gray-700">Category: {formData.category}</p>
+
           <div className="flex justify-between mt-4">
             <button
               onClick={openModal}
@@ -195,6 +198,22 @@ const PropertyCard = () => {
                             name="price"
                             type="number"
                             value={formData.price}
+                            onChange={handleChange}
+                            className="mt-1 p-2 block w-full border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                          />
+                        </div>
+                        <div>
+                          <label
+                            htmlFor="city"
+                            className="block text-sm font-medium text-gray-700"
+                          >
+                            Category
+                          </label>
+                          <input
+                            id="city"
+                            name="city"
+                            type="text"
+                            value={formData.category}
                             onChange={handleChange}
                             className="mt-1 p-2 block w-full border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                           />

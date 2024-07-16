@@ -1,7 +1,6 @@
 import { useState, Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import AddPropertyForm from "./Adding";
-import IconListAdd from "../../../icon/other";
 
 const AddPropertyButton = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +12,6 @@ const AddPropertyButton = () => {
     <>
       <div className="w-full h-full p-5 flex flex-row-reverse">
         <div className="w-full md:w-1/4 md:h-40 rounded h-full md:scale-150 flex flex-row md:gap-4 gap-2 items-center justify-center ">
-          <IconListAdd />
           <button
             onClick={openModal}
             className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 focus:outline-none focus:bg-green-600"

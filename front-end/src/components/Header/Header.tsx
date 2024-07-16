@@ -55,20 +55,20 @@ const Header = () => {
               </Link>
             </li>
             <li>
+              <Link
+                to="/explore"
+                className="block py-2 px-3 rounded md:bg-transparent md:text-third md:p-0"
+              >
+                Explore
+              </Link>
+            </li>
+            <li>
               <a
                 href="#about"
                 className="block py-2 px-3 rounded md:bg-transparent md:text-third md:p-0"
               >
                 About
               </a>
-            </li>
-            <li>
-              <Link
-                to="/cities"
-                className="block py-2 px-3 rounded md:bg-transparent md:text-third md:p-0"
-              >
-                Cities
-              </Link>
             </li>
 
             <li>
