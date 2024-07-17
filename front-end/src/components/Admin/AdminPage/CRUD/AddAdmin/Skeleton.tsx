@@ -12,10 +12,28 @@ const Skeleton = () => {
   };
 
   return (
-    <div className="h-full md:h-screen w-full flex items-center justify-center bg-gray-100">
+    <div className="h-full w-full flex pt-4 justify-center bg-gray-100">
       <div className="bg-white p-6 md:h-2/5 rounded-lg shadow-md md:w-3/5  sm:w-96">
         <h2 className="text-2xl font-bold mb-4 text-center">Add Admin</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <div className="space-y-2">
+            <label
+              htmlFor="name"
+              className="block text-gray-700 text-sm font-bold"
+            >
+              Full Name
+            </label>
+            <input
+              id="name"
+              type="text"
+              placeholder="Full Name"
+              {...register("name", { required: "Name is required" })}
+              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-indigo-500"
+            />
+            {errors.name && typeof errors.name === "string" && (
+              <p className="text-red-500 text-sm">{errors.name}</p>
+            )}
+          </div>
           <div className="space-y-2">
             <label
               htmlFor="email"
