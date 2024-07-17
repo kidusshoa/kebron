@@ -13,8 +13,22 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = '__all__'
 
+# class PropertyResponseSerializer(serializers.ModelSerializer):
+#     city = CitySerializer()
+#     category = CategorySerializer()
+#     class Meta:
+#         model = Property
+#         fields = '__all__'
+
 
 class PropertySerializer(serializers.ModelSerializer):
     class Meta:
         model = Property
         fields = '__all__'
+    
+    def to_representation(self, instance):
+        response = super().to_representation(instance)
+        response['city'] = CitySerializer(instance.city).data
+        response['category'] = CategorySerializer(instance.category).data
+        return response
+    

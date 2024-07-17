@@ -6,11 +6,6 @@ import Admin from "./components/Admin/AdminPage/Admin";
 import Review from "./components/Admin/AdminPage//Review/Review";
 import AddAdmin from "./components/Admin/AdminPage/CRUD/AddAdmin/AddAdmin";
 import Catagory from "./components/Catagories/Catagory";
-import AddisAbaba from "./components/Catagories/Region/towns/AddisAbaba";
-import Adama from "./components/Catagories/Region/towns/Adama";
-import Hawassa from "./components/Catagories/Region/towns/Hawassa";
-import Harar from "./components/Catagories/Region/towns/Harar";
-import DireDawa from "./components/Catagories/Region/towns/DireDawa";
 
 function App() {
   return (
@@ -22,11 +17,6 @@ function App() {
         <Route path="/admin/reviews" element={<Review />} />
         <Route path="/admin/addadmin" element={<AddAdmin />} />
         <Route path="/explore" element={<Catagory />} />
-        <Route path="/addisababa" element={<AddisAbaba />} />
-        <Route path="/adama" element={<Adama />} />
-        <Route path="/hawassa" element={<Hawassa />} />
-        <Route path="/harar" element={<Harar />} />
-        <Route path="/diredawa" element={<DireDawa />} />
       </Routes>
     </div>
   );

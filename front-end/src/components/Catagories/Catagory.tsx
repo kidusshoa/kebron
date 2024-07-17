@@ -1,13 +1,13 @@
-import Header from "../Header/Header";
 import FilterComponent from "./Region/FilterCard";
-import CityList from "./Region/Region";
+import PropertyList from "./Region/PropertyCard";
+import Header from "./Region/Header/Header";
 
 const Catagory = () => {
   return (
     <div className="w-full h-full">
       <Header />
       <FilterComponent />
-      <CityList />
+      <PropertyList />
     </div>
   );
 };

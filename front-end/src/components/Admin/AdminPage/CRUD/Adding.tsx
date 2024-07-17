@@ -1,6 +1,11 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { fetchCities } from "../../../../lib/services/city";
+import { fetchCategories } from "../../../../lib/services/category";
+import { createProperty } from "../../../../lib/services/property";
+import { useEffect } from "react";
 
 const schema = z.object({
   image: z
@@ -14,9 +19,6 @@ const schema = z.object({
   city: z.string().min(1, "City is required"),
 });
 
-const cities = ["Addis Ababa", "Adama", "Hawassa", "Harar City", "Dire Dawa"];
-const categories = ["Appartment", "Villa"]; // Example cities
-
 const AddPropertyForm = () => {
   const {
     register,
@@ -26,9 +28,39 @@ const AddPropertyForm = () => {
     resolver: zodResolver(schema),
   });
 
+  const { data: cities } = useQuery<any, any>({
+    queryKey: ["cities"],
+    queryFn: fetchCities,
+  });
+
+  const { data: categories } = useQuery<any, any>({
+    queryKey: ["categories"],
+    queryFn: fetchCategories,
+  });
+
+  const { isPending, isSuccess, error, mutate, reset } = useMutation({
+    mutationFn: createProperty,
+  });
+
+  useEffect(() => {
+    if (isSuccess) {
+      console.log("Success");
+      //Todo: show toast
+      reset();
+    }
+  }, [isSuccess]);
+
   const onSubmit = (data: any) => {
-    console.log(data);
-    // Handle form submission logic here (e.g., send data to server)
+    const formData = new FormData();
+    formData.append("cover", data.image[0]);
+    formData.append("phone_number", data.phoneNumber);
+    formData.append("address", data.address);
+    formData.append("number_of_bedrooms", data.bedroom);
+    formData.append("price", data.price);
+    formData.append("city", data.city);
+    formData.append("category", data.category);
+
+    mutate(formData);
   };
 
   return (
@@ -149,9 +181,9 @@ const AddPropertyForm = () => {
             className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-indigo-500"
           >
             <option value="">Choose a Category</option>
-            {categories.map((category) => (
-              <option key={category} value={category}>
-                {category}
+            {categories?.map((category: any) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
               </option>
             ))}
           </select>
@@ -174,9 +206,9 @@ const AddPropertyForm = () => {
             className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-indigo-500"
           >
             <option value="">Select a city</option>
-            {cities.map((city) => (
-              <option key={city} value={city}>
-                {city}
+            {cities?.map((city: any) => (
+              <option key={city.id} value={city.id}>
+                {city.name}
               </option>
             ))}
           </select>
@@ -187,6 +219,7 @@ const AddPropertyForm = () => {
           )}
         </div>
         <button
+          disabled={isPending}
           type="submit"
           className="w-full py-2 bg-first text-third rounded-lg hover:bg-second focus:outline-none focus:bg-indigo-600"
         >
