@@ -1,13 +1,14 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { toast } from "react-toastify";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { fetchCities } from "../../../../lib/services/city";
 import { fetchCategories } from "../../../../lib/services/category";
 import { createProperty } from "../../../../lib/services/property";
 import { useEffect } from "react";
 
-const schema = z.object({
+const AddPropertySchema = z.object({
   image: z
     .instanceof(FileList)
     .refine((files) => files.length > 0, "Image is required"),
@@ -20,12 +21,13 @@ const schema = z.object({
 });
 
 const AddPropertyForm = () => {
+  const queryClient = useQueryClient();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(AddPropertySchema),
   });
 
   const { data: cities } = useQuery<any, any>({
@@ -40,12 +42,17 @@ const AddPropertyForm = () => {
 
   const { isPending, isSuccess, error, mutate, reset } = useMutation({
     mutationFn: createProperty,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["properties"] });
+    },
   });
-
+  if (error) {
+    toast.error("Failed to Add the Property");
+  }
   useEffect(() => {
     if (isSuccess) {
       console.log("Success");
-      //Todo: show toast
+      toast.success("Property added successfully");
       reset();
     }
   }, [isSuccess]);

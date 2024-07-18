@@ -7,3 +7,11 @@ export const fetchReviews = async () => {
 
   return data;
 };
+
+export const createReview = async (values: any) => {
+  const { data } = await axios.post(
+    "http://localhost:8000/api/v1/review/reviews",
+    values
+  );
+  return data;
+};

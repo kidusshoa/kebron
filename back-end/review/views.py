@@ -1,6 +1,7 @@
 from rest_framework import viewsets, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Review
+from .permissions import WriteOnlyOrAuthenticated
 from .serializers import ReviewSerializer
 
 
@@ -9,3 +10,4 @@ class ReviewViewSet(viewsets.ModelViewSet):
     serializer_class = ReviewSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     search_fields = ['full_name', 'email', 'comment']
+    permission_classes = [WriteOnlyOrAuthenticated]

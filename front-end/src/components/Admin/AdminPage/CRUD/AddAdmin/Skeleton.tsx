@@ -1,14 +1,50 @@
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { useEffect } from "react";
+import { createUser } from "../../../../../lib/services/user";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { toast } from "react-toastify";
+
+const CreateAdminSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.string().min(1, "Email is required"),
+  password: z.string().min(1, "Password is required"),
+});
 
 const Skeleton = () => {
+  const queryClient = useQueryClient();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    resolver: zodResolver(CreateAdminSchema),
+  });
+
+  const { isPending, isSuccess, error, mutate, reset } = useMutation({
+    mutationFn: createUser,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["users"] });
+    },
+    onError(error) {
+      toast.error(error.message);
+    },
+  });
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("admin added successfully");
+      reset();
+    }
+  }, [isSuccess]);
 
   const onSubmit = (data: any) => {
-    console.log(data);
+    mutate({
+      full_name: data.name,
+      email: data.email,
+      password: data.password,
+    });
   };
 
   return (
@@ -30,8 +66,10 @@ const Skeleton = () => {
               {...register("name", { required: "Name is required" })}
               className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-indigo-500"
             />
-            {errors.name && typeof errors.name === "string" && (
-              <p className="text-red-500 text-sm">{errors.name}</p>
+            {errors.name && (
+              <p className="text-red-500 text-sm">
+                {errors.name.message?.toString()}
+              </p>
             )}
           </div>
           <div className="space-y-2">
@@ -71,6 +109,7 @@ const Skeleton = () => {
             )}
           </div>
           <button
+            disabled={isPending}
             type="submit"
             className="w-full py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600"
           >

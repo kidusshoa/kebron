@@ -1,13 +1,39 @@
-import { useQuery } from "@tanstack/react-query";
-import { fetchUsers } from "../../../../../lib/services/user";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { fetchUsers, deleteUser } from "../../../../../lib/services/user";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
 
 const AdminCard = () => {
+  const queryClient = useQueryClient();
+
   const { isLoading, data, error } = useQuery({
     queryKey: ["users"],
     queryFn: fetchUsers,
   });
-  const handleDelete = () => {
-    // onDelete(admin.id); //
+
+  const {
+    isPaused: deleteLoading,
+    isSuccess: deleteSuccess,
+    mutate: deleteMutate,
+  } = useMutation({
+    mutationFn: deleteUser,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["users"] });
+    },
+  });
+
+  if (error) {
+    toast.error("Failed to delete user");
+  }
+  useEffect(() => {
+    if (deleteSuccess) {
+      console.log("Success");
+      toast.success("Successfully Deleted");
+    }
+  }, [deleteSuccess]);
+
+  const handleDelete = (id: string) => {
+    deleteMutate(id);
   };
 
   if (isLoading || !data || error) {
@@ -24,7 +50,8 @@ const AdminCard = () => {
               <p className="text-lg font-semibold">{user.email}</p>
             </div>
             <button
-              onClick={handleDelete}
+              disabled={deleteLoading}
+              onClick={() => handleDelete(user.id)}
               className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 focus:outline-none"
             >
               Delete

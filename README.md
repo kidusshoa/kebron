@@ -10,6 +10,7 @@ Kebron Rents is A platform Based on Ethiopia Which is Online Home/Appartment Ren
        Tailwind
        Django
        Posgresql
+       sqlite
 
 # API Documentation
 
@@ -18,7 +19,12 @@ http://localhost:8000/api/v1/docs
 # Back-end setup
 
     cd back-end/
+    source ./venv/bin/activate
     python3 manage.py runserver
+    
+    - Django-Admin
+    
+        http://localhost:8000/admin 
 
 # Front-end setup
 

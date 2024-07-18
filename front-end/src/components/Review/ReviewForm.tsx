@@ -1,17 +1,49 @@
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { toast } from "react-toastify";
+import { useEffect } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { createReview } from "../../lib/services/review";
+
+const ReviewSchema = z.object({
+  full_name: z.string(),
+  email: z.string(),
+  comment: z.string(),
+});
 
 const ReviewForm = () => {
+  const queryClient = useQueryClient();
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
-  } = useForm();
+  } = useForm({
+    resolver: zodResolver(ReviewSchema),
+  });
+  const { isPending, isSuccess, error, mutate, reset } = useMutation({
+    mutationFn: createReview,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["properties"] });
+    },
+    onError(error) {
+      toast.error(error.message);
+    },
+  });
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("Property added successfully");
+      reset();
+    }
+  }, [isSuccess]);
 
   const onSubmit = (data: any) => {
     console.log("Form submitted:", data);
-    // Handle form submission logic here
-    reset(); // Reset form fields after submission
+    mutate({
+      full_name: data.full_name,
+      email: data.email,
+      comment: data.comment,
+    });
   };
 
   return (
@@ -28,7 +60,7 @@ const ReviewForm = () => {
           <input
             type="text"
             id="name"
-            {...register("name", { required: "Name is required" })}
+            {...register("full_name", { required: "Name is required" })}
             className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-third"
           />
           {errors.name && (

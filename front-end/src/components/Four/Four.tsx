@@ -1,4 +1,5 @@
 import Pic from "../../assets/images/appartment.jpg";
+import { Link } from "react-router-dom";
 
 const Four = () => {
   return (
@@ -25,12 +26,14 @@ const Four = () => {
           <p className="text-gray-700 text-base">
             <span className="font-semibold">Category:</span> Villa
           </p>
-          <button
-            type="button"
-            className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-second rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700  dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-          >
-            Explore
-          </button>
+          <Link to="/explore">
+            <button
+              type="button"
+              className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-second rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700  dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+            >
+              Explore
+            </button>
+          </Link>
         </div>
       </div>
       <div className="max-w-sm md:h-1/2 h-full w-full  rounded overflow-hidden shadow-lg bg-white">
@@ -55,12 +58,14 @@ const Four = () => {
           <p className="text-gray-700 text-base">
             <span className="font-semibold">Category:</span> Villa
           </p>
-          <button
-            type="button"
-            className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-second rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700  dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-          >
-            Explore
-          </button>
+          <Link to="/explore">
+            <button
+              type="button"
+              className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-second rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700  dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+            >
+              Explore
+            </button>
+          </Link>
         </div>
       </div>
       <div className="max-w-sm md:h-1/2 h:full w-full rounded overflow-hidden shadow-lg bg-white">
@@ -85,12 +90,14 @@ const Four = () => {
           <p className="text-gray-700 text-base">
             <span className="font-semibold">Category:</span> Villa
           </p>
-          <button
-            type="button"
-            className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-second rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700  dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-          >
-            Explore
-          </button>
+          <Link to="/explore">
+            <button
+              type="button"
+              className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-second rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700  dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+            >
+              Explore
+            </button>
+          </Link>
         </div>
       </div>
       <div className="max-w-sm md:h-1/2 h-full w-full rounded overflow-hidden shadow-lg bg-white">
@@ -115,12 +122,14 @@ const Four = () => {
           <p className="text-gray-700 text-base">
             <span className="font-semibold">Category:</span> Villa
           </p>
-          <button
-            type="button"
-            className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-second rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700  dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-          >
-            Explore
-          </button>
+          <Link to="/explore">
+            <button
+              type="button"
+              className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-second rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700  dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+            >
+              Explore
+            </button>
+          </Link>
         </div>
       </div>
     </div>

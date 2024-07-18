@@ -1,36 +1,50 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { useMutation } from "@tanstack/react-query";
+import { Navigate } from "react-router-dom";
+import { login } from "../../../lib/services/auth";
+import { useToken } from "../../../lib/configs/store";
+import { toast } from "react-toastify";
 
-const schema = z.object({
+const LoginSchema = z.object({
   email: z.string().min(1, "Email is required").email({
     message: "Please enter a valid email address",
   }),
   password: z.string().min(1, "Password is required"),
 });
 
-type FormData = z.infer<typeof schema>;
+type FormData = z.infer<typeof LoginSchema>;
 
 const LoginForm = () => {
-  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(LoginSchema),
+  });
+
+  const token = useToken((state) => state.token);
+  const setToken = useToken((state) => state.setToken);
+
+  const { isPending, mutate } = useMutation({
+    mutationFn: login,
+    onSuccess: (data) => {
+      setToken(data.access);
+    },
+    onError(error) {
+      toast.error(error.message);
+    },
   });
 
   const onSubmit = async (data: FormData) => {
-    setLoading(true);
-    // Simulate an API call
-    setTimeout(() => {
-      console.log("Form submitted:", data);
-      setLoading(false);
-      // Navigate to dashboard or other page
-    }, 2000);
+    mutate(data);
   };
+
+  if (token) {
+    return <Navigate to="/admin" replace />;
+  }
 
   return (
     <div className="max-w-md  mx-auto bg-white md:w-2/3 md:h-2/5 p-6 rounded-lg shadow-md">
@@ -75,9 +89,9 @@ const LoginForm = () => {
         <button
           type="submit"
           className="w-full py-2 bg-second text-white rounded-lg hover:bg-first focus:outline-none focus:bg-indigo-600"
-          disabled={loading}
+          disabled={isPending}
         >
-          {loading && <span className="loader mr-2"></span>}
+          {isPending && <span className="loader mr-2"></span>}
           Log In
         </button>
       </form>

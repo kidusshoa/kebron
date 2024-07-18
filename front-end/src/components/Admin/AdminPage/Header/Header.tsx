@@ -1,9 +1,14 @@
 import { useState } from "react";
 import logo from "../../../../assets/logo.png";
 import { Link } from "react-router-dom";
+import { useToken } from "../../../../lib/configs/store";
 
 const Header = () => {
   const [visible, setVisible] = useState(false);
+  const setToken = useToken((state) => state.setToken);
+  const handleLogout = () => {
+    setToken(null);
+  };
 
   return (
     <nav className="bg-first border-gray-200 h-28 top-0 sticky">
@@ -72,14 +77,13 @@ const Header = () => {
             </li>
 
             <li>
-              <Link to="/">
-                <button
-                  type="button"
-                  className=" border border-gray-300 focus:outline-none hover:bg-second focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 bg-third text-first "
-                >
-                  Log Out
-                </button>
-              </Link>
+              <button
+                onClick={handleLogout}
+                type="button"
+                className=" border border-gray-300 focus:outline-none hover:bg-second focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 bg-third text-first "
+              >
+                Log Out
+              </button>
             </li>
           </ul>
         </div>
