@@ -21,13 +21,17 @@ http://localhost:8000/api/v1/docs
     cd back-end/
     source ./venv/bin/activate
     python3 manage.py runserver
-    
+
     - Django-Admin
-    
-        http://localhost:8000/admin 
+
+        http://localhost:8000/admin
 
 # Front-end setup
 
     cd front-end/
     npm install
     npm run dev
+
+# slide links
+
+https://docs.google.com/presentation/d/1ewTburUK-KNtcXXIWlviGhXil63i5RqIDsC9q1SIOPw/edit?usp=sharing
